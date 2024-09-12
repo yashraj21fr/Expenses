@@ -4,45 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="style.css"
-    />
+    <link rel="stylesheet" href="static/style.css" />
   </head>
   <body>
     <div class="container">
       <h1>Register</h1>
-      <hr />
-      <form action="{{ url_for('register') }}" method="post">
+
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="messages">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
+      <form method="POST">
         <div class="form-group">
           <label for="username">Username:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="username"
-            name="username"
-            required
-          />
+          <input type="text" name="username" id="username" required />
         </div>
+
         <div class="form-group">
           <label for="password">Password:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            required
-          />
+          <input type="password" name="password" id="password" required />
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-        <a href="{{ url_for('login') }}" class="btn btn-link">Login</a>
-      </form>
-    </div>
 
-    <script src="{{ url_for('static', filename='user.js') }}"></script>
+        <button type="submit">Register</button>
+      </form>
+
+      <!-- Back Button -->
+      <button class="back-btn" onclick="history.back()">Back</button>
+    </div>
   </body>
 </html>
