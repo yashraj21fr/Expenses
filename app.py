@@ -148,15 +148,16 @@ def expense_chart():
 
     plt.figure(figsize=(6, 6))
     plt.pie(totals, labels=categories, autopct='%1.1f%%')
-    plt.title('Expenses by Category')
-
+    plt.title('Expense Distribution by Category')
+    
     if not os.path.exists('static'):
         os.makedirs('static')
-
-    plt.savefig('static/expense_chart.png')
+        
+    chart_path = 'static/expense_chart.png'
+    plt.savefig(chart_path)
     plt.close()
 
-    return render_template('expense_chart.html', chart_url=url_for('static', filename='expense_chart.png'))
+    return render_template('expense_chart.html', chart_path=chart_path)
 
 if __name__ == '__main__':
     app.run(debug=True)
