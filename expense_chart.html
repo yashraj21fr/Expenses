@@ -3,15 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <title>Expense Chart</title>
+    <link rel="stylesheet" href="static/style.css" />
   </head>
   <body>
-    <h1>Expenses by Category</h1>
-    <img
-      src="{{ url_for('static', filename='expense_chart.png') }}"
-      alt="Expense Chart"
-    />
-    <a href="/">Back to Home</a>
+    <div class="container">
+      <h1>Expense Chart</h1>
+      <img src="{{ chart_path }}" alt="Expense Distribution Chart" style="max-width: 100%;" />
+      <button class="back-btn" onclick="history.back()">Back</button>
+    </div>
   </body>
 </html>
